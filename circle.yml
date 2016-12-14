@@ -15,7 +15,8 @@ test:
         killall sc;
       else
         break;
-      done;
+      fi
+      done
     - python -m hello.hello_app:
         background: true
     # Wait for app to be ready
