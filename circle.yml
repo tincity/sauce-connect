@@ -8,14 +8,14 @@ test:
     # Wait for tunnel to be ready
     - for i in {1..3};
       do
-        echo "hello"
+        echo "hello";
         sleep 30;
       if [ ! -e ~/sauce_is_ready ];
       then
-        echo "killall"
+        echo "killall";
         killall sc;
       else
-        echo "break"
+        echo "break";
         break;
       fi
       done
