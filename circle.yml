@@ -6,16 +6,16 @@ dependencies:
 test:
   override:
     # Wait for tunnel to be ready
-    - for i in {1..3}
+    - for i in {1..3};
       do
-        echo hello
-        sleep 1
-      if [ ! -e ~/sauce_is_ready ]
+        echo hello;
+        sleep 1;
+      if [ ! -e ~/sauce_is_ready ];
       then
-        killall sc
+        killall sc;
       else
-        break
-      done
+        break;
+      done;
     - python -m hello.hello_app:
         background: true
     # Wait for app to be ready
