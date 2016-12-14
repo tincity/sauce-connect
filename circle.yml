@@ -6,11 +6,10 @@ dependencies:
 test:
   override:
     # Wait for tunnel to be ready
-    - test1 = "cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --readyfile ~/sauce_is_ready"
-      for i in {1..3};
+    - for i in {1..3};
       do
-        $test1;
-        sleep 1m;
+        cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --readyfile ~/sauce_is_ready;
+        sleep 30;
       if [ ! -e ~/sauce_is_ready ];
       then
         killall sc
