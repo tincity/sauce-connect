@@ -18,7 +18,8 @@ test:
         echo "break";
         break;
       fi
-      done
+      done: 
+        background: true
     - python -m hello.hello_app:
         background: true
     # Wait for app to be ready
