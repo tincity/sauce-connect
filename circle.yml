@@ -5,19 +5,10 @@ dependencies:
 
 test:
   override:
+    - cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --readyfile ~/sauce_is_ready:
+        background: true
     # Wait for tunnel to be ready
-    - for i in {1..3};
-      do
-        cd sc-*-linux && ./bin/sc --user $SAUCE_USERNAME --api-key $SAUCE_ACCESS_KEY --readyfile ~/sauce_is_ready;
-      if [ ! -e ~/sauce_is_ready ];
-      then
-        echo "killall";
-        killall sc;
-      else
-        echo "break";
-        break;
-      fi
-      done
+    - while [ ! -e ~/sauce_is_ready ]; do sleep 1; done
     - python -m hello.hello_app:
         background: true
     # Wait for app to be ready
@@ -25,4 +16,4 @@ test:
     # Run selenium tests
     - nosetests
   post:
-    - killall --wait sc  # wait for Sauce Connect to close the tunnel
+- killall --wait sc  # wait for Sauce Connect to close the tunnel
