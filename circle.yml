@@ -16,4 +16,4 @@ test:
     # Run selenium tests
     - nosetests
   post:
-- killall --wait sc  # wait for Sauce Connect to close the tunnel
+    - killall --wait sc  # wait for Sauce Connect to close the tunnel
